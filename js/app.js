@@ -317,7 +317,7 @@
     results.innerHTML = "";
     results.append(el("h2", { text: hits.length ? `Results for "${ev.target.value.trim()}"` : `Nothing matches "${ev.target.value.trim()}"` }));
     if (hits.length) results.append(el("div", { class: "results-grid" }, hits.map(card)));
-    else results.append(el("p", { class: "results-empty", text: "Try a show name, like Storm Crown, or a word like hurricane." }));
+    else results.append(el("p", { class: "results-empty", text: "Try a show name, like The Other Side of Love." }));
     results.hidden = false; hero.hidden = true; rowsBox.hidden = true;
   });
 

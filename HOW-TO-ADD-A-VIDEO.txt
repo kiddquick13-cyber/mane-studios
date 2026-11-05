@@ -1,40 +1,33 @@
 MANE STUDIOS site: how to add a video
 =====================================
 
-Everything you watch on the site is listed in one file:  js/catalog.js
+Everything on the site is listed in one file:  js/catalog.js
 You never need to touch the other files.
 
-1. Put the video online
-   Upload the .mp4 to your video storage (Cloudflare R2) and copy its link.
-   It looks like:  https://your-bucket-link/tosl-s2e2.mp4
-   (YouTube also works. Write it as  youtube:VIDEO_ID  , where VIDEO_ID is
-   the part after "watch?v=" in the YouTube link.)
+1. Shrink and name the video
+   Big CapCut exports stream badly. Shrink them first (ask Claude).
+   Use names with no spaces, like  tosl-s2e01.mp4
 
-2. Paste the link into catalog.js
-   Find the episode or movie and put the link between the quotes after video:
-     { title: "Handoff", video: "" }
-   becomes
-     { title: "Handoff", length: "3:00", video: "https://your-bucket-link/tosl-s2e2.mp4" }
-   As soon as a title has a link, "Coming soon" turns into a Play button.
+2. Upload it to Cloudflare
+   Cloudflare > R2 Object Storage > manestudiosvideos > Upload.
+   Its link is your storage address plus the file name:
+     https://pub-aaebe547980947bf937593585efd745f.r2.dev/tosl-s2e01.mp4
 
-3. Add a new episode
-   Copy an episode line, paste it under the last one, and change the title,
-   the about line and the link. Keep the comma between lines.
+3. Put the link in catalog.js (on GitHub)
+   Open kiddquick13-cyber/mane-studios > js > catalog.js > the pencil (Edit).
+   Each episode is one line:
+     { title: "Episode 1", length: "3:00", video: "PASTE THE LINK HERE" },
+   Keep the comma at the end of every line except the last one in a season.
+   Click "Commit changes". The site updates in about a minute.
 
-4. Add a new show or movie
-   Copy a whole title block (for example "blood-money": { ... }), give it a
-   new short id, change the words, then add that id to a row at the top
-   under rows: so it shows up on the home page.
+4. Adding a new season
+   Copy the whole Season 1 block, paste it after it with a comma between
+   them, rename it "Season 2", and change the episodes and links.
 
 5. Posters
-   Titles without a picture get a color poster with the name on it.
-   To use a real poster, put the image in the media folder and add
+   Put a poster image in the media folder and point to it in catalog.js:
      poster: "media/your-poster.jpg"     (tall, 2:3)
      backdrop: "media/your-banner.jpg"   (wide, 16:9)
 
 6. Ratings
    "TV-MA" titles ask viewers to confirm they're 18 or older before playing.
-
-Note: The Other Side of Love, Season 2, Episode 1 currently plays a 10-second
-placeholder (media/sample-clip.mp4). Swap in the real episode link when it's
-uploaded, then delete that sample file.
