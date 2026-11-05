@@ -69,7 +69,18 @@
     </div>
   </div>
 
-  <script src="js/catalog.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Always load the newest show list and app (no stale copies after an update). -->
+  <script>
+    (function () {
+      var v = Date.now();
+      function load(src, done) {
+        var s = document.createElement("script");
+        s.src = src + "?v=" + v;
+        if (done) s.onload = done;
+        document.body.appendChild(s);
+      }
+      load("js/catalog.js", function () { load("js/app.js"); });
+    })();
+  </script>
 </body>
 </html>
