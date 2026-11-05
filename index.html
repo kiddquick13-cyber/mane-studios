@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MANE STUDIOS</title>
+  <meta name="description" content="Watch MANE STUDIOS series, movies and hometown stories. Free, no account.">
+  <meta name="theme-color" content="#1a0f0e">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip" href="#rows">Skip to shows</a>
+
+  <header class="top" id="top">
+    <a class="brand" href="#" aria-label="MANE STUDIOS home">
+      <img class="brand-logo" src="media/logo.svg" alt="MANE STUDIOS" width="633" height="240">
+    </a>
+    <nav class="nav" aria-label="Sections" id="nav"></nav>
+    <label class="search">
+      <span class="visually-hidden">Search titles</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Search" autocomplete="off">
+    </label>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-label="Featured"></section>
+    <section class="results" id="results" hidden aria-live="polite"></section>
+    <div class="rows" id="rows"></div>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-brand"><img class="foot-logo" src="media/logo.svg" alt="MANE STUDIOS" width="633" height="240"><span>The House of Chaos</span></p>
+    <p>Free to watch. No account, no card.</p>
+    <p class="foot-small">&copy; <span id="year"></span> MANE STUDIOS. All films are original MANE STUDIOS productions.</p>
+  </footer>
+
+  <!-- Title details -->
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title"></dialog>
+
+  <!-- 18+ check -->
+  <dialog class="gate" id="gate" aria-labelledby="gate-title">
+    <form method="dialog" class="gate-body">
+      <p class="rating-badge rating-ma">TV-MA</p>
+      <h2 id="gate-title">This title is for adults 18 and older</h2>
+      <p id="gate-text">It has strong language and mature themes.</p>
+      <div class="gate-actions">
+        <button class="btn btn-gold" value="yes">I'm 18 or older</button>
+        <button class="btn btn-ghost" value="no">Go back</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Player -->
+  <div class="player" id="player" hidden role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="player-bar">
+      <button class="player-back" id="player-back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Back</button>
+      <p class="player-title" id="player-title"></p>
+    </div>
+    <div class="player-stage" id="player-stage"></div>
+    <div class="player-next" id="player-next" hidden>
+      <p>Up next</p>
+      <p class="player-next-title" id="player-next-title"></p>
+      <button class="btn btn-gold" id="player-next-btn">Play next episode</button>
+    </div>
+  </div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

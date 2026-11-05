@@ -1,0 +1,40 @@
+MANE STUDIOS site: how to add a video
+=====================================
+
+Everything you watch on the site is listed in one file:  js/catalog.js
+You never need to touch the other files.
+
+1. Put the video online
+   Upload the .mp4 to your video storage (Cloudflare R2) and copy its link.
+   It looks like:  https://your-bucket-link/tosl-s2e2.mp4
+   (YouTube also works. Write it as  youtube:VIDEO_ID  , where VIDEO_ID is
+   the part after "watch?v=" in the YouTube link.)
+
+2. Paste the link into catalog.js
+   Find the episode or movie and put the link between the quotes after video:
+     { title: "Handoff", video: "" }
+   becomes
+     { title: "Handoff", length: "3:00", video: "https://your-bucket-link/tosl-s2e2.mp4" }
+   As soon as a title has a link, "Coming soon" turns into a Play button.
+
+3. Add a new episode
+   Copy an episode line, paste it under the last one, and change the title,
+   the about line and the link. Keep the comma between lines.
+
+4. Add a new show or movie
+   Copy a whole title block (for example "blood-money": { ... }), give it a
+   new short id, change the words, then add that id to a row at the top
+   under rows: so it shows up on the home page.
+
+5. Posters
+   Titles without a picture get a color poster with the name on it.
+   To use a real poster, put the image in the media folder and add
+     poster: "media/your-poster.jpg"     (tall, 2:3)
+     backdrop: "media/your-banner.jpg"   (wide, 16:9)
+
+6. Ratings
+   "TV-MA" titles ask viewers to confirm they're 18 or older before playing.
+
+Note: The Other Side of Love, Season 2, Episode 1 currently plays a 10-second
+placeholder (media/sample-clip.mp4). Swap in the real episode link when it's
+uploaded, then delete that sample file.
